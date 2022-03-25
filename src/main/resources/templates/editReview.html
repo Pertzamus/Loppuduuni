@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Arvostelut</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1> Muokkaa arvostelua</h1>
+	<div>
+		<form th:object="${review}" th:action="@{save}" action="#" method="post">
+		
+		<input type="hidden" id="id" th:field="*{id}" />
+		
+		<label for="nimi">Ruoan nimi</label>
+		<input type="text" id="title" th:field="*{nimi}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<label for="pvm">Päivämäärä</label>
+		<input type="text" id="title" th:field="*{pvm}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<label for="aineet">Raaka-aineet</label>
+		<input type="text" id="title" th:field="*{aineet}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<label for="aika">Valmistusaika (min)</label>
+		<input type="text" id="title" th:field="*{aika}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<label for="arvio">Arvio 1-5</label>
+		<input type="text" id="title" th:field="*{arvio}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<label for="resepti">Resepti</label>
+		<input type="text" id="title" th:field="*{resepti}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		
+		<label for="categorylist">Kokkasitko vai Söitkö</label>
+			<select id="categorylist" th:field="*{category}">
+				<option th:each="category: ${categories}"
+					th:value="${category.categoryid}"
+					th:text="${category.nimi}"></option>
+			</select>
+			
+		<input type="submit" value="Save"></input>
+		</form>
+		</div>
+</body>
+</html>

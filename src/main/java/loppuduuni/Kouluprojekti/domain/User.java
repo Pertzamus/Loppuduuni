@@ -2,6 +2,7 @@ package loppuduuni.Kouluprojekti.domain;
 
 import javax.persistence.*;
 
+@Entity
 public class User {
 
 	@Id
@@ -61,5 +62,4 @@ public class User {
 			this.role = role;
 		}
 
-	
-}
+	}

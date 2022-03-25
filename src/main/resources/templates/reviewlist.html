@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Arvostelulista</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Arvostelut</h1>
+<h3 th:inline="text">Tervetuloa [[${#httpServletRequest.remoteUser}]]</h3>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+<table class="table table-striped">
+		<tr>
+			<th>Ruoan nimi</th>
+		    <th>Päivämäärä</th>
+		    <th>Raaka-aineet</th>
+		    <th>Kokkasitko vai Söitkö</th>
+		    <th>Valmistusaika(min)</th>
+		    <th>Arvio 1-5</th>
+		    <th>Resepti</th>
+		</tr>  
+    	<tr th:each = "review : ${reviews}">
+    	<td th:text="${review.nimi}"></td>
+    	<td th:text="${review.pvm}"></td>
+    	<td th:text="${review.aineet}"></td>
+    	<td th:text="${review.category.nimi}"></td>
+    	<td th:text="${review.aika}"></td>
+    	<td th:text="${review.arvio}"></td>
+    	<td th:text="${review.resepti}"></td>
+ 		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${review.id})}">Poista</a></td>
+ 		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success" th:href="@{/editReview/{id}(id=${review.id})}">Muokkaa</a></td>    		   		
+    	</tr>
+     </table>
+	 <a class="btn btn-success" href="/newReview">Lisää arvostelu</a>
+</body>
+</html>

@@ -23,7 +23,7 @@ public class UserController {
 	private UserRepository repository;
 	
 	@RequestMapping(value = "register")
-	public String addBook(Model model) {
+	public String addReview(Model model) {
 		model.addAttribute("registerform", new RegisterForm());
 		return "register";
 	}
@@ -37,7 +37,6 @@ public String save(@Valid @ModelAttribute("registerform") RegisterForm registerF
 	    	String hashPwd = bc.encode(pwd);
 
 	    	User newUser = new User();
-		   	newUser.setPasswordHash(hashPwd);
 		   	newUser.setUsername(registerForm.getUsername());
 		   	newUser.setRole("USER");
 		   	if (repository.findByUsername(registerForm.getUsername()) == null) { // Check if user exists

@@ -85,7 +85,7 @@ public class Review {
 	}
 
 	public void setResepti(String resepti) {
-		resepti = resepti;
+		this.resepti = resepti;
 	}
 
 	public int getAika() {
