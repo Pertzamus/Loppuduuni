@@ -3,9 +3,12 @@ package loppuduuni.Kouluprojekti.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+import javax.persistence.Id;
 
 
 
@@ -16,19 +19,33 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@Size(min=2, max=100)
 	private String nimi;
+	
+	@Size(min=1, max=10)
 	private	String pvm;
+	
+	@Size(min=1)	
 	private String aineet;
+	
+	@Size(min=1)
 	private String resepti;
-	private int aika, arvio;
+	
+	private int aika;
+	@Min(0)
+	@Max(5)
+	private int arvio;
 	
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	private Category category;
 	
-	public Review() {}
+	public Review() {
+		super();
+	}
 	
-	public Review(String nimi, String pvm, String aineet, int aika, int arvio, String resepti, Category category) {
+	public Review(String nimi,String pvm, String aineet, int aika, int arvio, String resepti, Category category) {
 		
 		super();
 		this.nimi= nimi;
@@ -38,6 +55,14 @@ public class Review {
 		this.arvio= arvio;
 		this.resepti= resepti;
 		this.category= category;
+	}
+	
+	public Review(String nimi, String pvm, String aineet) {
+		
+		super();
+		this.nimi= nimi;
+		this.pvm= pvm;
+		this.aineet= aineet;
 	}
 
 	public Long getId() {

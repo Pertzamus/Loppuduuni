@@ -1,9 +1,13 @@
 package loppuduuni.Kouluprojekti.web;
 
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +49,11 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Review review) {
+	public String save(@Valid Review review, BindingResult bindingResult, Model model) {
+	if (bindingResult.hasErrors()) {
+		System.out.println("validointi virhe");
+		return "/newReview";
+	}
 		reviewRepository.save(review);
 		return "redirect:/reviewlist";
 	}

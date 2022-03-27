@@ -30,16 +30,17 @@ public class UserController {
 	
 @RequestMapping(value = "saveuser", method = RequestMethod.POST)
 public String save(@Valid @ModelAttribute("registerform") RegisterForm registerForm, BindingResult bindingResult) {
-    if (!bindingResult.hasErrors()) { // validation errors
-    	if (registerForm.getPassword().equals(registerForm.getPasswordCheck())) { // check password match		
+    if (!bindingResult.hasErrors()) { 
+    	if (registerForm.getPassword().equals(registerForm.getPasswordCheck())) { // Vastaako salasanat		
 	    	String pwd = registerForm.getPassword();
 	    	BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
 	    	String hashPwd = bc.encode(pwd);
 
 	    	User newUser = new User();
+	    	newUser.setPasswordHash(hashPwd);
 		   	newUser.setUsername(registerForm.getUsername());
 		   	newUser.setRole("USER");
-		   	if (repository.findByUsername(registerForm.getUsername()) == null) { // Check if user exists
+		   	if (repository.findByUsername(registerForm.getUsername()) == null) { // Onko käyttäjä olemassa
 		    	repository.save(newUser);
 		    }			    	
 		   	else {

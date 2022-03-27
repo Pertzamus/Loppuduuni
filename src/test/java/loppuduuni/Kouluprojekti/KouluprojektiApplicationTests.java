@@ -1,13 +1,21 @@
 package loppuduuni.Kouluprojekti;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import loppuduuni.Kouluprojekti.web.ReviewController;
 
 @SpringBootTest
 class KouluprojektiApplicationTests {
+	
+	@Autowired
+	private ReviewController controller;
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() throws Exception {
+		assertThat(controller).isNotNull();
 	}
-
 }

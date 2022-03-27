@@ -3,12 +3,11 @@
 <head>
 <title>Arvostelut</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1> Muokkaa arvostelua</h1>
 	<div>
-		<form th:object="${review}" th:action="@{save}" action="#" method="post">
+		<form th:object="${review}" th:action="@{../save}" action="#" method="post">
 		
 		<input type="hidden" id="id" th:field="*{id}" />
 		
