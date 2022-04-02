@@ -2,11 +2,8 @@ package loppuduuni.Kouluprojekti.web;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.Base64;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
