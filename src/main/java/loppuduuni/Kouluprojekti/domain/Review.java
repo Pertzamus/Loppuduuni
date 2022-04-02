@@ -17,7 +17,7 @@ import javax.persistence.Id;
 public class Review {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Size(min=2, max=100)
