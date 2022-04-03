@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<h1>Files</h1>
-<table>
+<h1>Tiedostot</h1>
+<table class="table table-striped">
 <tr>
-<th>Name</th>
-<th>Type</th>
+<th>Nimi</th>
+<th>Tyyppi</th>
 </tr>
 <tr th:each = "file : ${files}">
 <td th:text="${file.fileName}"></td>
 <td th:text="${file.mimeType}"></td>
-<td><a th:href="@{/file/{id}(id=${file.id})}">Download</a></td>
+<td><a th:href="@{/file/{id}(id=${file.id})}">Lataa</a></td>
 </tr>
 </table>
-<a href="/">Upload</a>
-
+<table>
+<tr>
+</tr>
+</table>
+<a class="btn" href="/">Uppaa tiedosto</a>
+<a class="btn" href="/reviewlist">Arvostelut</a>
 </body>
 </html>

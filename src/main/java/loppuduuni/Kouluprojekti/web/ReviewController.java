@@ -41,6 +41,7 @@ public class ReviewController {
 	return "reviewlist";
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/newReview")
     public String addReview(Model model){
     	model.addAttribute("review", new Review());
@@ -52,7 +53,7 @@ public class ReviewController {
 	public String save(@Valid Review review, BindingResult bindingResult, Model model) {
 	if (bindingResult.hasErrors()) {
 		System.out.println("validointi virhe");
-		return "/newReview";
+		return "redirect:/newReview";
 	}
 		reviewRepository.save(review);
 		return "redirect:/reviewlist";
