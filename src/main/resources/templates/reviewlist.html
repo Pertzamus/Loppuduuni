@@ -34,7 +34,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
  		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success" th:href="@{/editReview/{id}(id=${review.id})}">Muokkaa</a></td>    		   		
     	</tr>
      </table>
-	 <a class="btn btn-success" href="/newReview">Lisää arvostelu</a>
+	 <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-success" href="/newReview">Lisää arvostelu</a>
 	 <a class="btn" href="/">Tiedostot</a>
 </body>
 </html>

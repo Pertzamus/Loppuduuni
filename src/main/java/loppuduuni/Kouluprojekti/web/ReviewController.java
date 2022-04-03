@@ -41,7 +41,7 @@ public class ReviewController {
 	return "reviewlist";
 	}
 	
-	@PreAuthorize("hasAuthority('ADMIN')")
+	
     @RequestMapping(value = "/newReview")
     public String addReview(Model model){
     	model.addAttribute("review", new Review());
