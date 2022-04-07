@@ -30,6 +30,9 @@ public class KouluprojektiApplication {
 			
 			reviewRepo.save(new Review("Pinaattiletut", "06.03.2022", "Pinaattia ja Lettuja", 5, 3, "Lettuja ja pinaattia mikroon 3 minuutiksi",
 			categoryRepo.findByNimi("Kokkasin").get(0)));
+			
+			reviewRepo.save(new Review("Helppo munakas", "02.04.2022", "4 kananmunaa, 0,5 dl vetta tai kermaa, tomaatti, 100 g Snellmanin Ylikypsää kinkkua, suolaa, pippuria, voita paistamiseen", 5, 5, "Sekoita munat, neste ja mauste. Voitele pannu ja paista miedolla lämmöllä lisäten sekaan loput ainekset",
+			categoryRepo.findByNimi("Kokkasin").get(0)));
 
 			
 			// Luo käyttäjät: admin/admin user/user

@@ -2,7 +2,7 @@ package loppuduuni.Kouluprojekti.web;
 
 import java.io.IOException;
 import java.util.Optional;
-import java.util.Base64;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
